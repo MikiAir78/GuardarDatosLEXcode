@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController <NSXMLParserDelegate>
+@interface ViewController : UIViewController <NSXMLParserDelegate, UITextFieldDelegate>
 {    
     NSXMLParser *xmlParser;
     NSInteger profundidad;

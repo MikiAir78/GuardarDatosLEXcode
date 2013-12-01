@@ -27,6 +27,9 @@
     diccionarioDeContactos = [[NSMutableDictionary alloc] init];
     arrayDeContactos = [[NSMutableArray alloc] init];
     
+    [self.nombreTextField setDelegate:self];
+    [self.apellidosTextField setDelegate:self];
+    [self.telefonoTextField setDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -238,37 +241,23 @@
     [data writeToFile:ubicacionFichero atomically:YES];
 }
 
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 #pragma mark - Private Methods
 - (void)showCurrentDepth
 {
     NSLog(@"Profundidad actual: %d", profundidad);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @end
