@@ -27,6 +27,9 @@
     diccionarioDeContactos = [[NSMutableDictionary alloc] init];
     arrayDeContactos = [[NSMutableArray alloc] init];
     
+    [self.nombreTextField setDelegate:self];
+    [self.apellidosTextField setDelegate:self];
+    [self.telefonoTextField setDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -236,6 +239,14 @@
     NSData *data = [xmlString dataUsingEncoding:NSUTF8StringEncoding];
     
     [data writeToFile:ubicacionFichero atomically:YES];
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 #pragma mark - Private Methods
