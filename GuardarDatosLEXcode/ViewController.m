@@ -138,7 +138,10 @@
 {
     if ([claveActual isEqualToString:@"nombre"] || [claveActual isEqualToString:@"apellidos"] || [claveActual isEqualToString:@"telefono"])
     {
-        [nombreActual appendString:string];
+        // Sustituye los caracteres de tabulación y salto de línea
+        NSString *stringLimpio = [[string stringByReplacingOccurrencesOfString:@"\n" withString:@""] stringByReplacingOccurrencesOfString:@"\t" withString:@""];
+        
+        [nombreActual appendString:stringLimpio];
         [diccionarioDeContactos setObject:nombreActual forKey:claveActual];
     }
     
